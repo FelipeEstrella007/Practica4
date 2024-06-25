@@ -1,3 +1,4 @@
+require('dotenv').config();
 class ConectarBD{
     constructor(){
         this.conexion=null;
@@ -6,11 +7,11 @@ class ConectarBD{
     async ConectarMySql(){
       try {
         this.conexion=await this.mysql.createConnection({
-            host:'localhost',
-            user:'root',
-            password:'',
-            database:'empresa',
-            port:3306
+            host:process.env.MYSQL_ADDON_HOST,
+            user:process.env.MYSQL_ADDON_USER,
+            password:process.env.MYSQL_ADDON_PASSWORD,
+            database:process.env.MYSQL_ADDON_DB,
+            port:process.env.MYSQL_ADDON_PORT
         });
         console.log("Conexión creada en MySql");
         
